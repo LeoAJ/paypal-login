@@ -13,7 +13,7 @@
     "PayPal",
     "login"
   ],
-  "main": "seed-element.html",
+  "main": "paypal-login.html",
   "license": "MIT",
   "ignore": [
     "/.*"
