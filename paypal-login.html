@@ -1,0 +1,138 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <paypal-login></paypal-login>
+
+@element paypal-login
+@blurb Element embed log in with PayPal in your site.
+@status alpha
+@homepage http://polymerlabs.github.io/seed-element
+-->
+<polymer-element name="paypal-login" role="button">
+
+  <template>
+
+    <link rel="stylesheet" href="paypal-login.css">
+    
+    <span id="paypal-login-entry"></span>
+
+  </template>
+
+  <script src="https://www.paypalobjects.com/js/external/api.js"></script>
+  <script>
+
+    Polymer('paypal-login', {
+
+      /**
+       * The `appID` attribute is the app (client) ID of your PayPal app. Create one at https://developers.paypal.com
+       * 
+       * @attribute appID
+       * @type string
+       */
+      appID: '',
+
+      /**
+       * The `authend` attribute specifies auth end point.
+       * 
+       * @attribute authend
+       * @type string
+       * default `production`
+       */
+      authend: 'production',
+
+      /**
+       * The `locale` attribute specifies locale option.
+       * 
+       * @attribute locale
+       * @type string
+       * default `en-us`
+       */
+      locale: 'en-us',
+
+      /**
+       * The `returnurl` attribute specifies the return URL it matched the url you assign in the developer.paypal.com.
+       * 
+       * @attribute returnurl
+       * @type string
+       * default ``
+       */
+      returnurl: '',
+
+      /**
+       * The scopes you want to access to.
+       * see (https://developer.paypal.com/docs/integration/direct/identity/attributes)
+       * 
+       * @attribute scope
+       * @type string
+       * default `None`
+       */
+      scope: 'None',
+
+      /**
+       * element ID of your container
+       * 
+       * @attribute containerID
+       * @type string
+       * default `myContainer`
+       */
+      containerID: 'myContainer',
+
+      /**
+       * button theme style
+       * 
+       * @attribute theme
+       * @type string
+       * default `blue`
+       */
+      theme: 'blue',
+
+      getPayPalScript: function (d, s, id) {
+
+        var pjs, sct;
+
+        if (typeof paypal === 'undefined') {
+
+          pjs = d.getElementsByTagName(s)[0];
+
+          if (d.querySelector('#' + id)) {
+            return;
+          }
+          
+          sct = d.createElement(s);
+
+          sct.id = id;
+
+          sct.src = '//www.paypalobjects.com/js/external/api.js';
+
+          this.shadowRoot.appendChild(sct);
+
+          console.log(paypal.use);
+
+          // pjs.parentNode.insertBefore(sct, pjs);
+
+        }
+
+      },
+
+      ready: function () {
+
+        if (!this.appID) {
+
+          console.error('appID is missing for log in with PayPal.');
+          return;
+
+        }
+
+        
+
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
