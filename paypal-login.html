@@ -12,7 +12,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://polymerlabs.github.io/seed-element
 -->
-<polymer-element name="paypal-login" role="button">
+<polymer-element name="paypal-login" attributes="appID authend locale returnurl scopes theme" role="button">
 
   <template>
 
@@ -42,7 +42,7 @@ Element providing solution to no problem in particular.
        * @type string
        * default `production`
        */
-      authend: 'production',
+      authend: '',
 
       /**
        * The `locale` attribute specifies locale option.
@@ -66,20 +66,11 @@ Element providing solution to no problem in particular.
        * The scopes you want to access to.
        * see (https://developer.paypal.com/docs/integration/direct/identity/attributes)
        * 
-       * @attribute scope
+       * @attribute scopes
        * @type string
        * default `None`
        */
-      scope: 'None',
-
-      /**
-       * element ID of your container
-       * 
-       * @attribute containerID
-       * @type string
-       * default `myContainer`
-       */
-      containerID: 'myContainer',
+      scopes: 'profile email address phone https://uri.paypal.com/services/paypalattributes',
 
       /**
        * button theme style
@@ -120,6 +111,8 @@ Element providing solution to no problem in particular.
 
       ready: function () {
 
+        var paypaOpt = {};
+
         if (!this.appID) {
 
           console.error('appID is missing for log in with PayPal.');
@@ -127,7 +120,15 @@ Element providing solution to no problem in particular.
 
         }
 
-        
+        if (this.authend !== 'sandbox' && this.authend !== '') {
+
+          console.error('authend can only be sandbox or empty (production).');
+          return;
+
+        }
+
+        paypal.use( ['login'], function(login) {
+        });
 
       }
 
