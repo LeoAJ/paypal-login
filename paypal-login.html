@@ -97,11 +97,9 @@ Element providing solution to no problem in particular.
 
           sct.id = id;
 
-          sct.src = '//www.paypalobjects.com/js/external/api.js';
+          sct.src = 'https://www.paypalobjects.com/js/external/api.js';
 
           this.shadowRoot.appendChild(sct);
-
-          console.log(paypal.use);
 
           // pjs.parentNode.insertBefore(sct, pjs);
 
@@ -127,7 +125,18 @@ Element providing solution to no problem in particular.
 
         }
 
+        // this.getPayPalScript(document, 'script', 'XYZ');
+
+        console.log(this.appID);
+
         paypal.use( ['login'], function(login) {
+          login.render ({
+            "appid": this.appID,
+            "scopes": this.scopes,
+            "containerid": "paypal-login-entry",
+            "locale": this.locale,
+            "returnurl": this.returnurl
+          });
         });
 
       }
