@@ -1,4 +1,4 @@
 paypal-login
 ================
 
-See the [component page] for more information.
+See the [component page](http://leoj.net/paypal-login) for more information.
