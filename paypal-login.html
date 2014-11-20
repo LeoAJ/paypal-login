@@ -40,9 +40,9 @@ Element providing solution to no problem in particular.
        * 
        * @attribute authend
        * @type string
-       * default `production`
+       * default `sandbox`
        */
-      authend: '',
+      authend: 'sandbox',
 
       /**
        * The `locale` attribute specifies locale option.
@@ -70,7 +70,7 @@ Element providing solution to no problem in particular.
        * @type string
        * default `None`
        */
-      scopes: 'profile email address phone https://uri.paypal.com/services/paypalattributes',
+      scopes: 'None',
 
       /**
        * button theme style
@@ -109,7 +109,7 @@ Element providing solution to no problem in particular.
 
       ready: function () {
 
-        var paypaOpt = {};
+        var self = this;
 
         if (!this.appID) {
 
@@ -118,24 +118,15 @@ Element providing solution to no problem in particular.
 
         }
 
-        if (this.authend !== 'sandbox' && this.authend !== '') {
-
-          console.error('authend can only be sandbox or empty (production).');
-          return;
-
-        }
-
-        // this.getPayPalScript(document, 'script', 'XYZ');
-
-        console.log(this.appID);
-
         paypal.use( ['login'], function(login) {
           login.render ({
-            "appid": this.appID,
-            "scopes": this.scopes,
-            "containerid": "paypal-login-entry",
-            "locale": this.locale,
-            "returnurl": this.returnurl
+            "appid": self.appID,
+            "authend": self.authend,
+            "scopes": self.scopes,
+            "locale": self.locale,
+            "theme": self.theme,
+            "returnurl": self.returnurl,
+            "containerid": "paypal-login-entry"
           });
         });
 
