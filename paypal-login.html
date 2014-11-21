@@ -1,16 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-Element providing solution to no problem in particular.
+`paypal-login` is a web component for Log in with PayPal
 
 ##### Example
 
-    <paypal-login></paypal-login>
+    <paypal-login
+      appID="Your Client ID"
+      authend="production"
+      theme="neutral"
+      returnurl="http://example.com">
+    </paypal-login>
 
 @element paypal-login
 @blurb Element embed log in with PayPal in your site.
 @status alpha
-@homepage http://leoaj.github.io/paypal-login
+@homepage http://leoj.net/paypal-login
 -->
 <polymer-element name="paypal-login" attributes="appID authend locale returnurl scopes theme" role="button">
 
@@ -80,32 +85,6 @@ Element providing solution to no problem in particular.
        * default `blue`
        */
       theme: 'blue',
-
-      getPayPalScript: function (d, s, id) {
-
-        var pjs, sct;
-
-        if (typeof paypal === 'undefined') {
-
-          pjs = d.getElementsByTagName(s)[0];
-
-          if (d.querySelector('#' + id)) {
-            return;
-          }
-          
-          sct = d.createElement(s);
-
-          sct.id = id;
-
-          sct.src = 'https://www.paypalobjects.com/js/external/api.js';
-
-          this.shadowRoot.appendChild(sct);
-
-          // pjs.parentNode.insertBefore(sct, pjs);
-
-        }
-
-      },
 
       ready: function () {
 
