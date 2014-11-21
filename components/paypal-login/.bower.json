@@ -1,0 +1,37 @@
+{
+  "name": "paypal-login",
+  "author": {
+    "name": "Leo Hsieh",
+    "url": "http://leoj.net"
+  },
+  "description": "web component for PayPal login button",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "PayPal",
+    "login"
+  ],
+  "main": "paypal-login.html",
+  "license": "MIT",
+  "ignore": [
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^0.7.3"
+  },
+  "homepage": "https://github.com/LeoAJ/paypal-login",
+  "_release": "0c11cf150e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0c11cf150ee7a145d0896f05ff68d58d139c331c"
+  },
+  "_source": "git://github.com/LeoAJ/paypal-login.git",
+  "_target": "master",
+  "_originalSource": "LeoAJ/paypal-login",
+  "_direct": true
+}

@@ -1,0 +1,27 @@
+{
+  "name": "paypal-login",
+  "version": "0.0.1",
+  "author": {
+    "name": "Leo Hsieh",
+    "url": "http://leoj.net"
+  },
+  "description": "web component for PayPal login button",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "PayPal",
+    "login"
+  ],
+  "main": "paypal-login.html",
+  "license": "MIT",
+  "ignore": [
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^0.7.3"
+  }
+}

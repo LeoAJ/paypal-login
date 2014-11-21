@@ -1,0 +1,118 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`paypal-login` is a web component for Log in with PayPal
+
+##### Example
+
+    <paypal-login
+      appID="Your Client ID"
+      authend="production"
+      theme="neutral"
+      returnurl="http://example.com">
+    </paypal-login>
+
+@element paypal-login
+@blurb Element embed log in with PayPal in your site.
+@status alpha
+@homepage http://leoj.net/paypal-login
+-->
+<polymer-element name="paypal-login" attributes="appID authend locale returnurl scopes theme" role="button">
+
+  <template>
+
+    <link rel="stylesheet" href="paypal-login.css">
+    
+    <span id="paypal-login-entry"></span>
+
+  </template>
+
+  <script src="https://www.paypalobjects.com/js/external/api.js"></script>
+  <script>
+
+    Polymer('paypal-login', {
+
+      /**
+       * The `appID` attribute is the app (client) ID of your PayPal app. Create one at https://developers.paypal.com
+       * 
+       * @attribute appID
+       * @type string
+       */
+      appID: '',
+
+      /**
+       * The `authend` attribute specifies auth end point.
+       * 
+       * @attribute authend
+       * @type string
+       * default `sandbox`
+       */
+      authend: 'sandbox',
+
+      /**
+       * The `locale` attribute specifies locale option.
+       * 
+       * @attribute locale
+       * @type string
+       * default `en-us`
+       */
+      locale: 'en-us',
+
+      /**
+       * The `returnurl` attribute specifies the return URL it matched the url you assign in the developer.paypal.com.
+       * 
+       * @attribute returnurl
+       * @type string
+       * default ``
+       */
+      returnurl: '',
+
+      /**
+       * The scopes you want to access to.
+       * see (https://developer.paypal.com/docs/integration/direct/identity/attributes)
+       * 
+       * @attribute scopes
+       * @type string
+       * default `None`
+       */
+      scopes: 'None',
+
+      /**
+       * button theme style
+       * 
+       * @attribute theme
+       * @type string
+       * default `blue`
+       */
+      theme: 'blue',
+
+      ready: function () {
+
+        var self = this;
+
+        if (!this.appID) {
+
+          console.error('appID is missing for log in with PayPal.');
+          return;
+
+        }
+
+        paypal.use( ['login'], function(login) {
+          login.render ({
+            "appid": self.appID,
+            "authend": self.authend,
+            "scopes": self.scopes,
+            "locale": self.locale,
+            "theme": self.theme,
+            "returnurl": self.returnurl,
+            "containerid": "paypal-login-entry"
+          });
+        });
+
+      }
+
+    });
+
+  </script>
+
+</polymer-element>

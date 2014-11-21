@@ -1,0 +1,7 @@
+{
+  "name": "paypal-login#gh-pages",
+  "private": true,
+  "dependencies": {
+    "paypal-login": "LeoAJ/paypal-login#master"
+  }
+}
