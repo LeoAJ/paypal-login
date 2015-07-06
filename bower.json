@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": {
     "name": "Leo Hsieh",
-    "url": "http://leoj.net"
+    "url": "http://leoj.js.org"
   },
   "description": "web component for PayPal login button",
   "keywords": [
